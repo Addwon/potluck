@@ -145,13 +145,14 @@ public class MainController {
     {        model.addAttribute("user",userRepository.findAll());
         return "users";
     }
+
     @RequestMapping("/privileges/{id}")
     public String grantPrivileges(@PathVariable("id") long id,Model model, User user,Role role)
     {
         user=userRepository.findOne(id);
-        role=roleRepository.findOne(id); //??
-        role.setRole("ADMIN");
-        roleRepository.save(role);
+//        role=roleRepository.findOne(id); //??
+ //       role.setRole("ADMIN");
+//        roleRepository.save(role);
         user.setUserRole("ADMIN");
         userRepository.save(user);
         model.addAttribute("user",userRepository.findOne(id));
