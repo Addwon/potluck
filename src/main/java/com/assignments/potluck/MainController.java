@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -164,6 +165,24 @@ public class MainController {
     {
         itemRepository.delete(id);
         model.addAttribute("item",itemRepository.findAll());
+        return "index";
+    }
+
+    //Search items
+
+    @GetMapping("/search")
+    public String getSearch()
+    {
+        return "index";
+    }
+
+    @PostMapping("/search")
+    public String showSearchResults(HttpServletRequest request, Model model)
+    {
+        //Get the search string from the result form
+        String searchString = request.getParameter("search");
+        model.addAttribute("item",itemRepository.findByItemNameContainingIgnoreCase(searchString));
+
         return "index";
     }
 }

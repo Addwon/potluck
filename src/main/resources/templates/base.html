@@ -5,19 +5,53 @@
     <title>Base</title>
     <!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
-    <link href="/css/stylesheet.css" rel="stylesheet"/>
+    <link href="/css/style.css" rel="stylesheet"/>
 </head>
 <body>
-<div th:fragment="navlinks">
+<div th:fragment="header">
     <!--<a href="/">index</a>-<a href="/2">Add Resume</a>-<a href="/3">Show Resume</a>-->
+<!--<div id="main">-->
+<div id="header">
+        <div id="logo">
+            <div id="logo_text">
+                <!-- class="logo_colour", allows you to change the colour of the text -->
+                <h1><a href="index.html">Pot<span class="logo_colour">luck</span></a></h1>
+                <h2>Feeding America</h2>
+             </div>
+        </div>
+    <!--<div id="menubar">
+        <ul id="menu">
+            &lt;!&ndash; put class="selected" in the li tag for the selected page - to highlight which page you're on &ndash;&gt;
+            <li><a href="index.html">Home</a></li>
+            <li class="selected"><a href="examples.html">Examples</a></li>
+            <li><a href="page.html">A Page</a></li>
+            <li><a href="another_page.html">Another Page</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </div>-->
 
-    <div class=container">
+    <div id="menubar">
+            <ul id="menu" >
+                <li class="selected"><a href="/">Home</a></li>
+                <li><a href="/pledgeitems">Pledge items</a></li>
+                <li><a href="/additems">Add items</a></li>
+                <li><a sec:authorize="hasAuthority('ADMIN')" href="/users">Users</a></li>
+                <li><a sec:authorize="isAnonymous()" href="/registration">Sign up</a></li>
+                <li><a sec:authorize="isAnonymous()" href="/login" >Log in</a></li>
+                <li><a th:href="@{/logout?logout}" class="nav-link js-scroll-trigger" sec:authorize="isAuthenticated()">Log Out</a></li>
+            </ul>
+    </div>
+</div>
+
+    <!--<div id="content_header"></div>-->
+
+    <!--<div id="menubar" class=container">
         <nav class="navbar navbar-expand-sm bg-light navbar-light">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <ul class="navbar-nav">
+            <ul id="menu" class="navbar-nav">
                 <li class="nav-item active">
                     <a class="nav-link" href="/">Home</a>
                 </li>
@@ -34,7 +68,7 @@
                     <a class="nav-link" sec:authorize="isAnonymous()" href="/registration">Sign up</a>
                 </li>
                 <li class="nav-item">
-                    <!--<a class="nav-link" href="/login">Login</a>-->
+                    &lt;!&ndash;<a class="nav-link" href="/login">Login</a>&ndash;&gt;
                     <a class="nav-link" sec:authorize="isAnonymous()" href="/login" >Log in</a>
                 </li>
                 <li class="nav-item">
@@ -43,8 +77,10 @@
             </ul>
         </nav>
     </div>
-</div>
+</div>-->
 <!--<div th:fragment="footer">copyright 2018</div>-->
+
+<!--
 <script
         src="http://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -52,5 +88,9 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+-->
+  </div>
+<div id="site_content">
+</div>
 </body>
 </html>
