@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
+
 <head>
     <meta charset="UTF-8" />
     <title>Index</title>
@@ -34,6 +35,8 @@
             <td th:text="${item.itemType}"></td>
 
             <td th:text="${item.uname}"></td>
+
+            <td><div><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/remove/{id}(id=${item.id})}">Remove</a></div></td>
         </tr>
         </tbody>
     </table>

@@ -84,4 +84,12 @@ public class MainController {
         model.addAttribute("user",userRepository.findOne(id));
         return "users";
     }
+
+    @RequestMapping("/remove/{id}")
+    public String removeItems(@PathVariable("id") long id,Model model, Item item)
+    {
+        itemRepository.delete(id);
+        model.addAttribute("item",itemRepository.findAll());
+        return "index";
+    }
 }
