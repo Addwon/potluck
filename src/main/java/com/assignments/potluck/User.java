@@ -1,9 +1,7 @@
 package com.assignments.potluck;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class User {
@@ -34,6 +32,11 @@ public class User {
     inverseJoinColumns=@JoinColumn(name="role_id"))
     private Collection<Role> roles;
 
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "user")
+    private Collection<Item> items = new HashSet<>();
+
     public User(String email, String password, String firstName, String lastName, boolean enabled, String username) {
         this.email = email;
         this.password = password;
@@ -41,9 +44,19 @@ public class User {
         this.lastName = lastName;
         this.enabled = enabled;
         this.username = username;
+        //this.items=items;
     }
 
     public User() {
+    }
+
+
+    public Collection<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(Collection<Item> items) {
+        this.items = items;
     }
 
     public long getId() {

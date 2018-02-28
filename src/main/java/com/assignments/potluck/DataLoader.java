@@ -30,22 +30,30 @@ public class DataLoader implements CommandLineRunner {
         user.setRoles(Arrays.asList(adminRole));
         userRepository.save(user);
 
-        user=new User("user@user.com","password","User","User",true,"user");
+        user=new User("user@user.com","password","Addis","Wondie",true,"user");
         user.setRoles(Arrays.asList(adminRole));
         userRepository.save(user);
 
         //Item 1
-        Item item=new Item();
-        item.setItemName("Pizza");
-        item.setServes(2);
-        item.setItemType("Food");
-        itemRepository.save(item);
+        Item item1=new Item();
+        item1.setItemName("Pizza");
+        item1.setServes(2);
+        item1.setItemType("Food");
+        item1.setUser(user);
+        item1.setUname(user.getFirstName());
+        itemRepository.save(item1);
 
         //Item 2
-        item=new Item();
-        item.setItemName("Juice");
-        item.setServes(2);
-        item.setItemType("Drink");
-        itemRepository.save(item);
+        Item item2=new Item();
+        item2.setItemName("Juice");
+        item2.setServes(2);
+        item2.setItemType("Drink");
+        item2.setUser(user);
+        item2.setUname(user.getFirstName());
+        itemRepository.save(item2);
+
+        /*user.getItems().add(item1);
+        user.getItems().add(item2);
+        userRepository.save(user);*/
     }
 }
