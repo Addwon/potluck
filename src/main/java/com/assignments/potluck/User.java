@@ -32,6 +32,7 @@ public class User {
     inverseJoinColumns=@JoinColumn(name="role_id"))
     private Collection<Role> roles;
 
+    private String userRole;
     @OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
             mappedBy = "user")
@@ -44,12 +45,18 @@ public class User {
         this.lastName = lastName;
         this.enabled = enabled;
         this.username = username;
-        //this.items=items;
     }
 
     public User() {
     }
 
+    public String getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
+    }
 
     public Collection<Item> getItems() {
         return items;
