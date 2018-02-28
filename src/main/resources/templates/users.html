@@ -21,6 +21,7 @@
             <th>Last name</th>
             <th>Email</th>
             <th>Role</th>
+            <th>Potluck items</th>
             <th>Admin privileges</th>
 
         </tr>
@@ -37,8 +38,11 @@
 
             <td th:text="${user.userRole}"></td>
 
-            <td><a th:href="@{/privileges/{id}(id=${user.id})}">Grant</a></td>
+            <!--<td th:text="${user.roles.role}"></td>-->
 
+            <td><a th:href="@{/additems/{id}(id=${user.id})}">Add</a></td>
+
+            <td><a th:href="@{/privileges/{id}(id=${user.id})}">Grant</a></td>
         </tr>
         </tbody>
     </table>

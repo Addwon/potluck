@@ -26,23 +26,28 @@ public class DataLoader implements CommandLineRunner {
         Role adminRole=roleRepository.findByRole("ADMIN");
         Role userRole=roleRepository.findByRole("USER");
 
-        User user=new User("admin@admin.com","password","Dave","Wolf",true,"DaveWolf");
-        user.setRoles(Arrays.asList(adminRole));
-        user.setUserRole(adminRole.getRole());
-        userRepository.save(user);
+        User user1=new User("admin@admin.com","password","Dave","Wolf",true,"DaveWolf");
+        user1.setRoles(Arrays.asList(adminRole));
+        user1.setUserRole(adminRole.getRole());
+        userRepository.save(user1);
 
-        user=new User("user@user.com","password","Addis","Wondie",true,"user");
-        user.setRoles(Arrays.asList(adminRole));
-        user.setUserRole(userRole.getRole());
-        userRepository.save(user);
+        User user2=new User("user@user.com","password","Addis","Wondie",true,"user");
+        user2.setRoles(Arrays.asList(userRole));
+        user2.setUserRole(userRole.getRole());
+        userRepository.save(user2);
+
+        User user3 = new User("bob@bob.com", "password", "Bob", "Marley", true, "BobMarley");
+        user3.setRoles(Arrays.asList(userRole));
+        user3.setUserRole(userRole.getRole());
+        userRepository.save(user3);
 
         //Item 1
         Item item1=new Item();
         item1.setItemName("Pizza");
         item1.setServes(2);
         item1.setItemType("Food");
-        item1.setUser(user);
-        item1.setUname(user.getFirstName());
+        item1.setUser(user2);
+        item1.setUname(user2.getFirstName());
         itemRepository.save(item1);
 
         //Item 2
@@ -50,8 +55,8 @@ public class DataLoader implements CommandLineRunner {
         item2.setItemName("Juice");
         item2.setServes(2);
         item2.setItemType("Drink");
-        item2.setUser(user);
-        item2.setUname(user.getFirstName());
+        item2.setUser(user3);
+        item2.setUname(user3.getFirstName());
         itemRepository.save(item2);
 
         /*user.getItems().add(item1);

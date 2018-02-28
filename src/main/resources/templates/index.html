@@ -34,7 +34,7 @@
 
             <td th:text="${item.itemType}"></td>
 
-            <td th:text="${item.uname}"></td>
+            <td th:text="${item.user.firstName}"></td>
 
             <td><div><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/remove/{id}(id=${item.id})}">Remove</a></div></td>
         </tr>

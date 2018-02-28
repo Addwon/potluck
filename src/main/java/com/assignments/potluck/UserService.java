@@ -12,6 +12,7 @@ public class UserService {
 
     @Autowired
     RoleRepository roleRepository;
+
     @Autowired
     ItemRepository itemRepository;
 

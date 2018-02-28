@@ -8,13 +8,13 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name="Item_Name")
+
     private String itemName;
 
-    @Column(name="Serves")
+
     private int serves;
 
-    @Column(name="Item_Type")
+
     private String itemType;
 
     @ManyToOne(fetch = FetchType.LAZY)
